@@ -9,6 +9,12 @@
 	margin-top:2%;
 	margin-bottom:2%;
 }
+#logo img{
+	height: 100px !important;
+}
+span.input-group-addon.input-sm.span-input{
+	margin-top: 1% !important
+}
 
 #login
 {
@@ -33,14 +39,15 @@
 form
 {
 	background:#f0f0f0;
-	padding:6% 4%;
+	padding:8% 4%;
 }
 
 input[type="text"], input[type="password"]
 {
 	width:100%;
-	margin-bottom:4%;
+	margin-bottom:5%;
 	padding:4%;
+	height: 60px !important;
 }
 
 input[type="submit"]
@@ -57,4 +64,7 @@ input[type="submit"]
 input[type="submit"]:hover
 {
 	background:#2288bb;
+}
+.input-group.inputbox-lg{
+	margin-top: 4% !important;
 }

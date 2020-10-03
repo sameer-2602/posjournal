@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<base href="<?php echo base_url();?>" />
-	<title><?php echo $this->config->item('company') . ' | ' . $this->lang->line('common_powered_by') . ' OSPOS ' . $this->config->item('application_version') ?></title>
+	<title><?php echo $this->config->item('company') . ' | ' . $this->lang->line('common_powered_by') . ' POS Journal ' . $this->config->item('application_version') ?></title>
 	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="<?php echo 'dist/bootswatch/' . (empty($this->config->item('theme')) ? 'flatly' : $this->config->item('theme')) . '/bootstrap.min.css' ?>"/>
 
@@ -64,6 +64,7 @@
 		<script src="bower_components/bootstrap-toggle/js/bootstrap-toggle.min.js"></script>
 		<!-- endbower -->
 		<!-- start js template tags -->
+		<script type="text/javascript" src="js/clipboard.min.js"></script>
 		<script type="text/javascript" src="js/imgpreview.full.jquery.js"></script>
 		<script type="text/javascript" src="js/manage_tables.js"></script>
 		<script type="text/javascript" src="js/nominatim.autocomplete.js"></script>
@@ -77,7 +78,7 @@
 		<link rel="stylesheet" type="text/css" href="dist/opensourcepos.min.css?rel=397f582d3d"/>
 		<!-- end mincss template tags -->
 		<!-- start minjs template tags -->
-		<script type="text/javascript" src="dist/opensourcepos.min.js?rel=a429d1fc17"></script>
+		<script type="text/javascript" src="dist/opensourcepos.min.js?rel=1aaa35fa52"></script>
 		<!-- end minjs template tags -->
 	<?php endif; ?>
 
@@ -88,18 +89,69 @@
 		html {
 			overflow: auto;
 		}
+		.module_item a img{
+			height: 80px !important;
+			width: 80px !important
+		}
+		.menu-icon img{
+			height: 40px !important;
+			width: 40px !important;
+		}
+		#footer{
+  			bottom: 0;
+			width: 100%;
+		}
+		.customers .table-striped>thead>tr{
+			font-size: 18px;
+			margin-bottom: 1px;
+		}
+		..customers .table-striped>tbody>tr{
+			font-size: 16px;
+			margin-bottom: 1px;
+		}
+		.customers .glyphicon{
+			font-size: 22px !important;
+		}
+
+		.input-sm {
+		    left: 280px !important;
+		    width: 100% !important;
+		    margin-top: 4px !important;
+		}
+		.fixed-table-toolbar{
+			margin-top: 2% !important;
+		}
+		.customers .form-horizontal .form-group{
+			margin-bottom: 3% !important;
+		}
+		.customers .left-279{
+		    left: -279px !important;
+		}
+		.customers .modal-dialog{
+			width: 600px !important;
+		}
+
+		#footer {
+		    position: relative;
+		    bottom: 0;
+		    width: 100% !important;
+		    height: 100px !important;
+		}
+		.item_kits #item_name,#kit_discount {
+			left: 0 !important;
+		}
 	</style>
 </head>
 
-<body>
+<body class="<?=$this->uri->segment(1)?>">
 	<div class="wrapper">
-		<div class="topbar">
-			<div class="container">
+		<div class="topbar" style="height: 30px !important;">
+			<div class="container" style="margin-top: 2px; font-size:medium;">
 				<div class="navbar-left">
 					<div id="liveclock"><?php echo date($this->config->item('dateformat') . ' ' . $this->config->item('timeformat')) ?></div>
 				</div>
 
-				<div class="navbar-right" style="margin:0">
+				<div class="navbar-right" style="margin:0;">
 					<?php echo anchor('home/change_password/'.$user_info->person_id, $user_info->first_name . ' ' . $user_info->last_name, array('class' => 'modal-dlg', 'data-btn-submit' => $this->lang->line('common_submit'), 'title' => $this->lang->line('employees_change_password'))); ?>
 					<?php echo '  |  ' . ($this->input->get('debug') == 'true' ? $this->session->userdata('session_sha1') . '  |  ' : ''); ?>
 					<?php echo anchor('home/logout', $this->lang->line('common_logout')); ?>
@@ -121,7 +173,7 @@
 						<span class="icon-bar"></span>
 					</button>
 
-					<a class="navbar-brand hidden-sm" href="<?php echo site_url(); ?>">OSPOS</a>
+					<a class="navbar-brand hidden-sm" href="<?php echo site_url(); ?>">POS Journal</a>
 				</div>
 
 				<div class="navbar-collapse collapse">

@@ -32,12 +32,13 @@
 	<div class="tab-content">
 		<div class="tab-pane fade in active" id="customer_basic_info">
 			<fieldset>
-				<div class="form-group form-group-sm">
+				<input type="hidden" name="consent" value="true">
+				<!-- <div class="form-group form-group-sm">
 					<?php echo form_label($this->lang->line('customers_consent'), 'consent', array('class' => 'required control-label col-xs-3')); ?>
 					<div class='col-xs-1'>
 						<?php echo form_checkbox('consent', '1', $person_info->consent == '' ? (boolean)!$this->config->item('enforce_privacy') : (boolean)$person_info->consent); ?>
 					</div>
-				</div>
+				</div> -->
 
 				<?php $this->load->view("people/form_basic_info"); ?>
 				
@@ -68,7 +69,7 @@
 				<div class="form-group form-group-sm">
 					<?php echo form_label($this->lang->line('customers_discount'), 'discount', array('class' => 'control-label col-xs-3')); ?>
 					<div class='col-xs-3'>
-						<div class="input-group input-group-sm">
+						<div class="input-group input-group-sm left-279">
 							<?php echo form_input(array(
 									'name'=>'discount',
 									'id'=>'discount',
@@ -177,8 +178,37 @@
 									'name'=>'date',
 									'id'=>'datetime',
 									'class'=>'form-control input-sm',
-									'value'=>to_datetime(strtotime($person_info->date)),
-									'readonly'=>'true')
+									'value'=>to_datetime(strtotime($person_info->date)))
+									); ?>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group form-group-sm">
+					<?php echo form_label($this->lang->line('customers_dob'), 'dob', array('class'=>'control-label col-xs-3')); ?>
+					<div class='col-xs-8'>
+						<div class="input-group">
+							<!-- <span class="input-group-addon input-sm"><span class="glyphicon glyphicon-calendar"></span></span> -->
+							 <?php echo form_input(array(
+				                'name'=>'dob',
+				                'id'=>'dob',
+				                'type'=>'date',
+				                'value'=>'')
+						            );?>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group form-group-sm">
+					<?php echo form_label($this->lang->line('customers_aniversary'), 'anniversary', array('class'=>'control-label col-xs-3')); ?>
+					<div class='col-xs-8'>
+						<div class="input-group">
+							<!-- <span class="input-group-addon input-sm"><span class="glyphicon glyphicon-calendar"></span></span> -->
+							<?php echo form_input(array(
+									'name'=>'anniversary',
+									'id'=>'anniversary',
+									'type'=>'date',
+									'value'=>to_datetime(strtotime($person_info->dob)),)
 									); ?>
 						</div>
 					</div>
@@ -527,4 +557,14 @@ $(document).ready(function()
 		}
 	}, form_support.error));
 });
+
+$(document).ready(function(){
+	$("input").attr('style','background:#adb8b0');
+
+
+	$("input").on('click',function(){
+		var id = $(this).attr('id');
+		$(this).css('background','');
+	})
+})
 </script>

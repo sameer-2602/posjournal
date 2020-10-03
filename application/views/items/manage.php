@@ -97,3 +97,11 @@ $(document).ready(function()
 </div>
 
 <?php $this->load->view("partial/footer"); ?>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".search .input-sm").attr('id','searchtable');
+        var input = document.getElementById('searchtable');
+        input.focus();
+        input.select();
+    })
+</script>

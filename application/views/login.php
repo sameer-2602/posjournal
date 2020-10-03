@@ -4,7 +4,7 @@
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<base href="<?php echo base_url();?>" />
 	<title><?php echo $this->config->item('company') . ' | OSPOS ' . $this->config->item('application_version')  . ' | ' .  $this->lang->line('login_login'); ?></title>
-	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
 	<link rel="stylesheet" type="text/css" href="<?php echo 'dist/bootswatch/' . (empty($this->config->item('theme')) ? 'flatly' : $this->config->item('theme')) . '/bootstrap.min.css' ?>"/>
 	<!-- start css template tags -->
 	<link rel="stylesheet" type="text/css" href="css/login.css"/>
@@ -24,13 +24,13 @@
 				<?php endif; ?>
 
 				<div id="login_form">
-					<div class="input-group">
-						<span class="input-group-addon input-sm"><span class="glyphicon glyphicon-user"></span></span>
+					<div class="input-group inputbox-lg">
+						<span class="input-group-addon input-sm span-input"><span class="glyphicon glyphicon-user"></span></span>
 						<input class="form-control" placeholder="<?php echo $this->lang->line('login_username')?>" name="username" type="text" size=20 autofocus></input>
 					</div>
 
-					<div class="input-group">
-						<span class="input-group-addon input-sm"><span class="glyphicon glyphicon-lock"></span></span>
+					<div class="input-group inputbox-lg">
+						<span class="input-group-addon input-sm span-input"><span class="glyphicon glyphicon-lock"></span></span>
 						<input class="form-control" placeholder="<?php echo $this->lang->line('login_password')?>" name="password" type="password" size=20></input>
 					</div>
 
@@ -47,8 +47,8 @@
 			</div>
 		<?php echo form_close(); ?>
 
-		<h1>Open Source Point Of Sale <?php echo $this->config->item('application_version'); ?></h1>
-
+<!-- 		<h1>Open Source Point Of Sale <?php echo $this->config->item('application_version'); ?></h1>
+ -->
 	</div>
 </body>
 </html>
